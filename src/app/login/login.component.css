@@ -1,0 +1,120 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+/* Full page layout */
+.main {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f6f9fc;
+}
+
+/* Container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Login box */
+.login-container {
+  background: #fff;
+  padding: 2.5rem 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  width: 350px;
+  transition: transform 0.3s ease;
+}
+
+.login-container:hover {
+  transform: translateY(-4px);
+}
+
+/* Input fields */
+.input-field-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.input-field label {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-field input:focus {
+  border-color: #ff6f61;
+  outline: none;
+  box-shadow: 0 0 6px rgba(255,111,97,0.4);
+}
+
+/* Submit button */
+.submit-button {
+  margin-top: 0.5rem;
+}
+
+.submit-button button {
+  width: 100%;
+  padding: 12px;
+  background: #ff6f61;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button button:hover {
+  background: #e65b50;
+  transform: scale(1.02);
+}
+
+/* Reset password link */
+.reset-password {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.reset-password p {
+  color: #ff6f61;
+  font-size: 13px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.reset-password p:hover {
+  text-decoration: underline;
+  color: #e65b50;
+}
+
+/* Mobile responsive */
+@media (max-width: 400px) {
+  .login-container {
+    width: 90%;
+    padding: 2rem;
+  }
+}
+.danger{
+  color:red;
+}
