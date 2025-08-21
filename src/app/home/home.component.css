@@ -1,4 +1,6 @@
-/* ---------- Base & Theme ---------- */
+p{
+    width: max-content;
+}
 :root{
   --bg: #ffffff;
   --bg-soft: #f6f7fb;
@@ -194,6 +196,50 @@ body{ margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, 
 .title-text{
     margin-left: 1rem;
 }
+.shop-button{
+    background: #248afe;
+    color: white;
+    border: none;
+    width: 7rem;
+    height: 2rem;
+    border-radius: 10px;
+}
+
+.feature-products{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+.feature-products-elements{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    left: 6%;
+}
+.product{
+    width:20%;
+}
+.product-details{
+    display: flex;
+    color: white;
+    flex-direction: column;
+}
+.feature-products-heading{
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    position: relative;
+    left: 7%;
+}
+.product-img{
+    width: 60%;
+    border-radius: 15px;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 992px){
   .pages-links{ gap: 18px; }
