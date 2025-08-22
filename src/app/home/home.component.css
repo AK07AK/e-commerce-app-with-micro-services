@@ -239,6 +239,42 @@ body{ margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, 
     width: 60%;
     border-radius: 15px;
 }
+.shop-by-catgory{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+.shop-by-catgory-heading{
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    position: relative;
+    left: 7%;
+}
+.shop-by-catgory-elements{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    left: 6%;
+}
+.category{
+    width:20%;
+}
+
+.category-details{
+    display: flex;
+    color: white;
+    flex-direction: column;
+}
+.category-img{
+    width: 60%;
+    border-radius: 15px;
+
+}
 
 /* ---------- Responsive ---------- */
 @media (max-width: 992px){
