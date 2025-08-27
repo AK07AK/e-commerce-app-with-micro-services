@@ -1,0 +1,125 @@
+/* Input fields */
+.input-field-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.input-field label {
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-field input:focus {
+  border-color: #ff6f61;
+  outline: none;
+  box-shadow: 0 0 6px rgba(255,111,97,0.4);
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
+/* Full page layout */
+.main {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f6f9fc;
+}
+
+/* Container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* signup box */
+.signup-container {
+  background: #fff;
+  padding: 2.5rem 3rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  width: 350px;
+  transition: transform 0.3s ease;
+}
+
+.signup-container:hover {
+  transform: translateY(-4px);
+}
+
+.submit-button {
+  margin-top: 0.5rem;
+}
+
+.submit-button button {
+  width: 100%;
+  padding: 12px;
+  background: #ff6f61;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button button:hover {
+  background: #e65b50;
+  transform: scale(1.02);
+}
+
+
+signupForm select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    -webkit-appearance: none; /* Removes default OS styling on WebKit browsers */
+    -moz-appearance: none; /* Removes default OS styling on Firefox */
+    appearance: none; /* Removes default OS styling */
+}
+
+/* Add a hover effect for better user experience */
+.signupForm select:hover {
+    border-color: #555;
+}
+
+/* Add a focus effect for accessibility */
+.signupForm select:focus {
+    outline: none; /* Removes the default outline */
+    border-color: #007bff; /* A blue border to indicate focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+
+.danger{
+    color: red;
+}
+
+a{
+    cursor: pointer;
+}

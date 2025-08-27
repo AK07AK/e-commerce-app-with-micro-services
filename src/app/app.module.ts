@@ -7,12 +7,13 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
-import { CustomersComponent } from './seller/customers/customers.component';
-import { MarketingComponent } from './seller/marketing/marketing.component';
-import { ProdutcsComponent } from './seller/produtcs/produtcs.component';
-import { OrdersComponent } from './seller/orders/orders.component';
-import { AnalyticsComponent } from './seller/analytics/analytics.component';
-import { DashboardComponent } from './seller/dashboard/dashboard.component';
+import { CustomersComponent } from './sellers/customers/customers.component';
+import { MarketingComponent } from './sellers/marketing/marketing.component';
+import { ProdutcsComponent } from './sellers/produtcs/produtcs.component';
+import { OrdersComponent } from './sellers/orders/orders.component';
+import { AnalyticsComponent } from './sellers/analytics/analytics.component';
+import { DashboardComponent } from './sellers/dashboard/dashboard.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { DashboardComponent } from './seller/dashboard/dashboard.component';
     OrdersComponent,
     AnalyticsComponent,
     DashboardComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

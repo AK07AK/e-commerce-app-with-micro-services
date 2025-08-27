@@ -1,1 +1,56 @@
-<p>signup works!</p>
+<div class="main">
+    <div class="container">
+        <div class="signup-container">
+    <form  class="signupForm" [formGroup]="signupForm">
+        <div class="input-field-container">
+        <div class="input-field">
+            <label for="email">Email</label>
+            <input type="email" formControlName="email"  name="username">
+            <div *ngIf="signupForm.controls['email'].touched">
+                <span class="danger" *ngIf="signupForm.controls['email'].errors?.['required']">*this field is required</span>
+
+            </div>
+        </div>
+        <div class="input-field">
+            <label for="password">Password</label>
+            <input type="password" formControlName="password"  name="username">
+            <div *ngIf="signupForm.controls['password'].touched">
+                <span *ngIf="signupForm.controls['password'].errors?.['required']" class="danger">*this field is required</span>
+
+            </div>
+        </div>
+         <div class="input-field">
+            <label for="retype-password">retype Password</label>
+            <input type="password" formControlName="retypePassword"  name="username">
+            <div *ngIf="signupForm.controls['retypePassword'].touched">
+                <span *ngIf="signupForm.controls['retypePassword'].errors?.['required']" class="danger">*this field is required</span>
+
+            </div>
+        </div>
+         <div class="input-field">
+            <label for="role">Select Who You Are </label>
+            <select name="role" id="role" formControlName="loginType">
+                <option value="user">I am a User</option>
+                <option value="seller">I am a Seller</option>
+            </select>
+            <div *ngIf="signupForm.controls['loginType'].touched">
+                <span *ngIf="signupForm.controls['loginType'].errors?.['required']" class="danger">*this field is required</span>
+
+            </div>
+        </div>
+        <div class="submit-button">
+            <button (click)="signup()">signup</button>
+        </div>
+        <div class="reset-password">
+            <p style="font-size: 13px;">Aleready a user? <a [routerLink]="['/login']">login</a></p>
+        </div>
+    </div>
+
+    </form>
+
+
+</div>
+
+    </div>
+
+</div>
