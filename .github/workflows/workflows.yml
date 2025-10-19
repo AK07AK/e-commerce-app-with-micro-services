@@ -87,7 +87,7 @@ jobs:
           # The commands to run on the remote Ubuntu server:
           script: |
             # Define the final deployment path
-            DEPLOY_PATH="/var/www/my-app"
+            DEPLOY_PATH="/var/www/e-commerce"
             
             # Navigate to the deployment directory
             cd $DEPLOY_PATH
@@ -107,8 +107,6 @@ jobs:
             
             # Clean up the archive
             rm release.tar.gz
-            
-            # (OPTIONAL: Add your server restart command here)
-            # Example: sudo systemctl restart nginx
+    
             
             echo "Deployment to $DEPLOY_PATH complete!"
