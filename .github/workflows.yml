@@ -1,0 +1,114 @@
+# .github/workflows/deploy.yml
+
+name: Angular CI/CD Development Deploy
+
+# This workflow runs on pushes to 'main' or manual trigger
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# --- JOB 1: BUILD (CI - Continuous Integration) ---
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 1. Setup the required Node.js environment
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          # Use a standard LTS version of Node.js
+          node-version: '20' 
+          
+      # 2. Install Angular CLI and project dependencies
+      - name: Install dependencies
+        run: |
+          npm install -g @angular/cli
+          npm ci
+        # Explanation of 'npm ci': This is preferred over 'npm install' in CI. 
+        # It's faster and strictly uses the versions defined in package-lock.json.
+
+      # 3. Build the Angular Application
+      - name: Build Angular app for production
+        # Assuming your production build script is 'ng build' or 'npm run build'
+        run: ng build --configuration=production 
+        # This command compiles the app and creates optimized files in the 'dist/' folder (default location).
+
+      # 4. Prepare the artifacts (the built files)
+      - name: Tar the built application files
+        # We need to find the exact built directory name, which often includes the project name.
+        # This command finds the 'dist' directory and tars its contents.
+        run: |
+          BUILD_DIR=$(find dist -maxdepth 1 -type d -name "*-app" | head -n 1)
+          if [ -z "$BUILD_DIR" ]; then
+            # Fallback for older Angular versions or specific configurations
+            BUILD_DIR="dist" 
+          fi
+          # Create a compressed archive of the built files
+          tar -czf release.tar.gz -C $BUILD_DIR . 
+
+      # 5. Upload the archive as an artifact for the deployment job
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-package
+          path: release.tar.gz
+
+# --- SEPARATOR --- 
+
+# --- JOB 2: DEPLOY (CD - Continuous Deployment) ---
+  deploy:
+    # This job only runs if the 'build' job succeeded
+    needs: build
+    runs-on: ubuntu-latest
+    
+    # Define the environment (optional, but good practice)
+    environment: development 
+
+    steps:
+      # 1. Download the built artifact from the previous job
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: release-package
+
+      # 2. Set up SSH for secure connection
+      - name: Deploy using SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          # Use the secrets we stored in Step 4 (Phase 1)
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          # The commands to run on the remote Ubuntu server:
+          script: |
+            # Define the final deployment path
+            DEPLOY_PATH="/var/www/my-app"
+            
+            # Navigate to the deployment directory
+            cd $DEPLOY_PATH
+            
+            # Remove any old archive to ensure clean deployment
+            rm -f release.tar.gz
+            
+            # The 'appleboy/ssh-action' moves local files *before* running the script, 
+            # so the 'release.tar.gz' file is now in the home directory of the deployer user.
+            
+            # Move the uploaded archive into the deployment path
+            mv ~/release.tar.gz $DEPLOY_PATH/
+            
+            # Extract the new application files, overwriting the old ones
+            # The 'z' flag uncompresses (gzip), 'x' extracts, 'f' specifies the file
+            tar -xzf release.tar.gz
+            
+            # Clean up the archive
+            rm release.tar.gz
+            
+            # (OPTIONAL: Add your server restart command here)
+            # Example: sudo systemctl restart nginx
+            
+            echo "Deployment to $DEPLOY_PATH complete!"
