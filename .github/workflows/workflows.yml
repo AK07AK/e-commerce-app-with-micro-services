@@ -43,7 +43,7 @@ jobs:
         # We need to find the exact built directory name, which often includes the project name.
         # This command finds the 'dist' directory and tars its contents.
         run: |
-          BUILD_DIR=$(find dist -maxdepth 1 -type d -name "*-app" | head -n 1)
+          BUILD_DIR=$(find dist -maxdepth 1 -type d -name "*-commerce" | head -n 1)
           if [ -z "$BUILD_DIR" ]; then
             # Fallback for older Angular versions or specific configurations
             BUILD_DIR="dist" 
