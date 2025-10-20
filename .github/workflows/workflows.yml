@@ -86,26 +86,22 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           # The commands to run on the remote Ubuntu server:
           script: |
-            # Define the final deployment path
+            
             DEPLOY_PATH="/var/www/e-commerce"
             
-            # Navigate to the deployment directory
+            
             cd $DEPLOY_PATH
             
-            # Remove any old archive to ensure clean deployment
+            
             rm -f release.tar.gz
             
-            # The 'appleboy/ssh-action' moves local files *before* running the script, 
-            # so the 'release.tar.gz' file is now in the home directory of the deployer user.
             
-            # Move the uploaded archive into the deployment path
             mv ~/release.tar.gz $DEPLOY_PATH/
             
-            # Extract the new application files, overwriting the old ones
-            # The 'z' flag uncompresses (gzip), 'x' extracts, 'f' specifies the file
+            
             tar -xzf release.tar.gz
             
-            # Clean up the archive
+            
             rm release.tar.gz
     
             
