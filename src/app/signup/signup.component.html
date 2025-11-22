@@ -1,1 +1,46 @@
-<p>signup works!</p>
+<div class="main">
+    <div class="container">
+        <div class="signup-container">
+            <form name="signupForm" [formGroup]="signupForm">
+                <div class="input-field-container">
+                    <div class="input-field">
+                        <label for="username">Username</label>
+                        <input type="text" formControlName="username" name="username">
+                        <div *ngIf="signupForm.controls['username'].touched">
+                            <span class="danger" *ngIf="signupForm.controls['username'].errors?.['required']">*username  is required</span>
+
+                        </div>
+                    </div>
+                    <div class="input-field">
+                        <label for="password">Password</label>
+                        <input type="password" formControlName="password" name="username">
+                        <div *ngIf="signupForm.controls['password'].touched">
+                            <span *ngIf="signupForm.controls['password'].errors?.['required']" class="danger">*password is required</span>
+
+                        </div>
+                    </div>
+                    <div class="input-field">
+                        <label for="email">Email</label>
+                        <input type="email" formControlName="emailId" name="email">
+                        <div *ngIf="signupForm.controls['emailId'].touched">
+                            <span *ngIf="signupForm.controls['emailId'].errors?.['required']" class="danger">*email is required</span>
+
+                        </div>
+                    </div>
+                    <div class="submit-button">
+                        <button (click)="signup()">signup</button>
+                    </div>
+                    <div class="reset-password">
+                        <p style="font-size: 13px;">forget password?</p>
+                        <a routerLink="/login"><p style="font-size: 13px;">Alerady having account?</p></a>
+                    </div>
+                </div>
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+</div>

@@ -23,14 +23,13 @@ export class LoginComponent {
     debugger;
     this.username = this.loginForm.value['username'];
     this.password=this.loginForm.value['password'];
-    console.log(this.password);
-    alert(this.username+" "+this.password)
     if(this.username ==='AK' && this.password ==='ak@143')
     {
       this.router.navigate(['/home'])
     }
     else{
-      alert('nope. not this time')
+      alert('Invalid id password. Please try again');
+      return;
     }
 
 
